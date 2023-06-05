@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">HYDROS</string>
+    <string name="splashscreen">Splash Screen</string>
+    <string name="image">Image</string>
+
+    <string name="title_page1">The Great Idea</string>
+    <string name="title_page2">One Step to Go</string>
+    <string name="title_page3">Make World Better</string>
+    <string name="title_page4">Let\'s Get Started!</string>
+    <string name="desc_page1">Welcome to Hydros, the app dedicated to detecting diseases and making the world a better place.</string>
+    <string name="desc_page2">With Hydros, we strive to improve healthcare by providing accurate and efficient disease detection, empowering individuals to take control of their health.</string>
+    <string name="desc_page3">Join us on this journey as we work together to create a healthier and happier world.</string>
+
+    <string name="skip">Skip</string>
+    <string name="prev">Prev</string>
+    <string name="next">Next</string>
+
+    <string name="login">Login</string>
+    <string name="to_reg">New user? Register Now!</string>
+    <string name="register">Register</string>
+    <string name="to_log">Already have an account? Login Now!</string>
+    <string name="name">Your Name</string>
+    <string name="email">Email Address</string>
+    <string name="phone">Phone Number</string>
+    <string name="password">Password</string>
+
+    <string name="warn_input">Field cannot be empty</string>
+    <string name="warn_email_customize">Email invalid</string>
+    <string name="warn_password_customize">Password must be at least 8 characters and contain numbers</string>
+
+    <string name="open">open</string>
+    <string name="close">close</string>
+
+    <string name="Analysis">Analysis</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="upload">Upload Photo</string>
+    <string name="choose_plant">Choose your plant</string>
+
+    <string-array name="plant">
+        <item>Spinach</item>
+        <item>Kangkong</item>
+        <item>Lettuce</item>
+        <item>Bok choy</item>
+        <item>Mustard greens</item>
+        <item>Tomato</item>
+        <item>Chili pepper</item>
+        <item>Strawberry</item>
+        <item>Cucumber</item>
+    </string-array>
+
+    <string name="permission_denied">Permission Denied</string>
+</resources>
