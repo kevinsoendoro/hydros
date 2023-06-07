@@ -3,18 +3,25 @@ package com.dicoding.picodiploma.hydros.view.analysis
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.MenuItem
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.dicoding.picodiploma.hydros.MainActivity
+import androidx.core.content.FileProvider
+import com.dicoding.picodiploma.hydros.view.main.MainActivity
 import com.dicoding.picodiploma.hydros.R
+import com.dicoding.picodiploma.hydros.createCustomTempFile
 import com.dicoding.picodiploma.hydros.databinding.ActivityAnalysisBinding
+import com.dicoding.picodiploma.hydros.uriToFile
 import java.io.File
 
 class AnalysisActivity : AppCompatActivity() {
@@ -38,7 +45,10 @@ class AnalysisActivity : AppCompatActivity() {
             Toast.makeText(this, "Selected : $selectedItem", Toast.LENGTH_SHORT).show()
         }
 
+        checkPermissions()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding.cameraButton.setOnClickListener { startTakePhoto() }
+        binding.galleryButton.setOnClickListener { startGallery() }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -71,6 +81,56 @@ class AnalysisActivity : AppCompatActivity() {
 
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun startTakePhoto() {
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        intent.resolveActivity(packageManager)
+
+        createCustomTempFile(application).also {file ->
+            val photoURI: Uri = FileProvider.getUriForFile(
+                this@AnalysisActivity,
+                "com.dicoding.picodiploma.hydros",
+                file
+            )
+            currentPhotoPath = file.absolutePath
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
+            launcherIntentCamera.launch(intent)
+        }
+    }
+
+    private fun startGallery() {
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+        intent.type = "image/*"
+        launcherIntentGallery.launch(intent)
+    }
+
+    private lateinit var currentPhotoPath: String
+
+    private val launcherIntentCamera = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+        if (it.resultCode == RESULT_OK) {
+            val myFile = File(currentPhotoPath)
+
+            myFile.let { file ->
+                getFile = file
+                binding.previewImageView.setImageBitmap(BitmapFactory.decodeFile(file.path))
+            }
+        }
+    }
+
+    private val launcherIntentGallery = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val selectedImg = result.data?.data as Uri
+            selectedImg.let { uri ->
+                val myFile = uriToFile(uri, this@AnalysisActivity)
+                getFile = myFile
+                binding.previewImageView.setImageURI(uri)
+            }
+        }
     }
 
     companion object {

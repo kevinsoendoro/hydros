@@ -9,7 +9,7 @@ import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import com.dicoding.picodiploma.hydros.MainActivity
+import com.dicoding.picodiploma.hydros.view.main.MainActivity
 import com.dicoding.picodiploma.hydros.databinding.ActivityLoginBinding
 import com.dicoding.picodiploma.hydros.view.register.RegisterActivity
 import com.dicoding.picodiploma.hydros.view.welcome.Onboarding
