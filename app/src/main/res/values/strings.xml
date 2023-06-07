@@ -50,4 +50,6 @@
     </string-array>
 
     <string name="permission_denied">Permission Denied</string>
+
+    <string name="date">dd/mm/yy</string>
 </resources>

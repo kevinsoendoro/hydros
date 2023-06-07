@@ -55,7 +55,7 @@
         style="@style/button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/camera"
+        android:text="@string/gallery"
         app:layout_constraintEnd_toEndOf="@+id/previewImageView"
         app:layout_constraintStart_toEndOf="@+id/cameraButton"
         app:layout_constraintTop_toTopOf="@+id/cameraButton" />

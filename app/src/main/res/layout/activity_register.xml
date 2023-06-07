@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="230dp"
-        android:layout_height="300dp"
+        android:layout_height="200dp"
         android:contentDescription="@string/image"
         android:src="@drawable/lets_get_started"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ed_login_name"
+        android:id="@+id/ed_register_name"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:boxStrokeColor="@color/brown"
         app:boxStrokeWidth="2dp"
@@ -42,7 +42,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ed_login_email"
+        android:id="@+id/ed_register_email"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:boxStrokeColor="@color/brown"
         app:boxStrokeWidth="2dp"
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_login_name"
+        app:layout_constraintTop_toBottomOf="@+id/ed_register_name"
         app:startIconDrawable="@drawable/ic_user_email">
 
         <com.dicoding.picodiploma.hydros.CustomEditText
@@ -66,7 +66,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ed_login_phone"
+        android:id="@+id/ed_register_password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:boxStrokeColor="@color/desert_sand"
         app:boxStrokeWidth="2dp"
@@ -74,32 +74,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_login_email"
-        app:startIconDrawable="@drawable/ic_user_phone">
-
-        <com.dicoding.picodiploma.hydros.CustomEditText
-            android:id="@+id/phoneEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            app:isPassword="true"
-            android:paddingEnd="40dp"
-            android:inputType="phone"
-            app:passwordToggleEnabled="true"
-            android:hint="@string/phone"
-            tools:ignore="SpeakableTextPresentCheck" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ed_login_password"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxStrokeColor="@color/desert_sand"
-        app:boxStrokeWidth="2dp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_login_phone"
+        app:layout_constraintTop_toBottomOf="@+id/ed_register_email"
         app:startIconDrawable="@drawable/ic_user_password">
 
         <com.dicoding.picodiploma.hydros.CustomEditText
@@ -117,15 +92,15 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button_login"
+        android:id="@+id/button_register"
         style="@style/button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/register"
-        app:layout_constraintEnd_toEndOf="@id/ed_login_password"
-        app:layout_constraintStart_toStartOf="@id/ed_login_password"
-        app:layout_constraintTop_toBottomOf="@+id/ed_login_password" />
+        app:layout_constraintEnd_toEndOf="@id/ed_register_password"
+        app:layout_constraintStart_toStartOf="@id/ed_register_password"
+        app:layout_constraintTop_toBottomOf="@+id/ed_register_password" />
 
     <TextView
         android:id="@+id/textView"
@@ -135,5 +110,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

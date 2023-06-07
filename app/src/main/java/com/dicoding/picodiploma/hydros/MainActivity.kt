@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
@@ -57,15 +58,9 @@ class MainActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
 
-                R.id.nav_logout -> Toast.makeText(
-                    applicationContext,
-                    "Clicked logout",
-                    Toast.LENGTH_SHORT
-                ).show()
-
                 R.id.nav_share -> {
-                    val shareIntent = Intent(Intent.ACTION_SEND);
-                    shareIntent.type = "text/plain";
+                    val shareIntent = Intent(Intent.ACTION_SEND)
+                    shareIntent.type = "text/plain"
                     shareIntent.putExtra(Intent.EXTRA_TEXT, "Please reach me at www.linkedin.com/in/nitamayega/");
                     startActivity(Intent.createChooser(shareIntent, "Share Link"))
                 }

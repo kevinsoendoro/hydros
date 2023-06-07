@@ -34,16 +34,15 @@
             android:exported="false" />
         <activity
             android:name=".view.login.LoginActivity"
-            android:exported="false"
-            android:label="@string/login" />
+            android:exported="false" />
         <activity
             android:name=".view.welcome.Onboarding"
             android:exported="false" />
         <activity
-            android:name=".view.welcome.SplashScreen"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".view.welcome.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

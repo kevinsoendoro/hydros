@@ -26,11 +26,12 @@ import java.io.File
 class AnalysisActivity : AppCompatActivity() {
 
     private var getFile: File? = null
-    private lateinit var binding: ActivityAnalysisBinding
+    private val binding: ActivityAnalysisBinding by lazy {
+        ActivityAnalysisBinding.inflate(layoutInflater)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAnalysisBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val items = resources.getStringArray(R.array.plant)

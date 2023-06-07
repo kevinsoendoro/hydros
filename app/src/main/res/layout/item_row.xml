@@ -5,61 +5,60 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_marginStart="8dp"
     android:layout_marginTop="4dp"
-    android:layout_marginEnd="8dp"
     android:layout_marginBottom="4dp"
     card_view:cardCornerRadius="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp">
+        android:padding="12dp">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_image"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_user"
+        <ImageView
+            android:id="@+id/img_photo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitCenter"
+            card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="4dp"
             card_view:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="4dp" />
+            tools:src="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/name"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@id/img_photo"
             android:textStyle="bold"
-            card_view:layout_constraintStart_toEndOf="@+id/profile_image"
-            card_view:layout_constraintTop_toTopOf="@id/profile_image"
-            card_view:layout_constraintBottom_toBottomOf="@id/profile_image"
-            android:layout_marginStart="4dp" />
+            android:textColor="@color/black"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintBottom_toTopOf="@+id/tv_status"
+            card_view:layout_constraintHorizontal_bias="0.0"
+            card_view:layout_constraintStart_toEndOf="@+id/img_photo"
+            card_view:layout_constraintTop_toTopOf="@+id/img_photo"
+            tools:text="@string/app_name" />
 
         <TextView
-            android:id="@+id/tv_desc"
-            android:layout_width="match_parent"
+            android:id="@+id/tv_status"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/desc_page1"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@id/profile_image"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp" />
+            card_view:layout_constraintStart_toStartOf="@+id/tv_name"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_name"
+            card_view:layout_constraintBottom_toBottomOf="@+id/img_photo"
+            android:text="Oops, your plant needs some love" />
 
-        <ImageView
-            android:id="@+id/post_photo"
-            android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:contentDescription="@string/image"
-            android:scaleType="fitCenter"
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/date"
+            android:textSize="10sp"
+            android:textColor="@color/grey"
             card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@id/tv_desc"
-            android:layout_marginTop="8dp"
-            tools:src="@tools:sample/avatars" />
+            card_view:layout_constraintTop_toTopOf="@+id/tv_name"
+            card_view:layout_constraintBottom_toBottomOf="@+id/tv_name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

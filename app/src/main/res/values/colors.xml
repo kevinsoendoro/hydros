@@ -18,5 +18,6 @@
 
     <color name="unselected">#C6C1BC</color>
     <color name="selected">#DA5B3E</color>
+    <color name="grey">#757575</color>
 
 </resources>
