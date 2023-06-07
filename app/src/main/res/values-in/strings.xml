@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">HYDROS</string>
+    <string name="splashscreen" translatable="false">Splash Screen</string>
+    <string name="image" translatable="false">Image</string>
+
+    <string name="title_page1">Ide Hebat</string>
+    <string name="title_page2">Satu Langkah Lagi</string>
+    <string name="title_page3">Membuat Dunia Lebih Baik</string>
+    <string name="title_page4">Ayo Mulai!</string>
+    <string name="desc_page1">Selamat datang di Hydros, aplikasi yang didedikasikan untuk mendeteksi penyakit pada tanaman hidroponik dan membuat dunia menjadi tempat yang lebih baik.</string>
+    <string name="desc_page2">Dengan Hydros, kami berusaha meningkatkan kesehatan pada tanaman hidroponik dengan menyediakan deteksi penyakit yang akurat dan efisien.</string>
+    <string name="desc_page3">Bergabunglah bersama kami dalam perjalanan ini saat kita bekerja sama untuk menciptakan dunia yang lebih sehat dan bahagia.</string>
+
+    <string name="skip">Lewati</string>
+    <string name="prev">Sebelumnya</string>
+    <string name="next">Berikutnya</string>
+
+    <string name="login">Masuk</string>
+    <string name="to_reg">Pengguna baru? Daftar Sekarang!</string>
+    <string name="register">Daftar</string>
+    <string name="to_log">Sudah memiliki akun? Masuk Sekarang!</string>
+    <string name="name">Nama Anda</string>
+    <string name="email">Alamat Email</string>
+    <string name="phone">Nomor Telepon</string>
+    <string name="password">Kata Sandi</string>
+
+    <string name="warn_input">Kolom tidak boleh kosong</string>
+    <string name="warn_email_customize">Email tidak valid</string>
+    <string name="warn_password_customize">Kata sandi harus terdiri dari setidaknya 8 karakter dan mengandung angka</string>
+
+    <string name="open">buka</string>
+    <string name="close">tutup</string>
+
+    <string name="Analysis">Analisis</string>
+    <string name="camera">Kamera</string>
+    <string name="gallery">Galeri</string>
+    <string name="upload">Unggah Foto</string>
+    <string name="choose_plant">Pilih tanaman Anda</string>
+
+    <string-array name="plant">
+        <item>Bayam</item>
+        <item>Kangkung</item>
+        <item>Selada</item>
+        <item>Pakcoy</item>
+        <item>Sawi putih</item>
+        <item>Tomat</item>
+        <item>Cabai</item>
+        <item>Stroberi</item>
+        <item>Timun</item>
+    </string-array>
+
+    <string name="permission_denied">Izin Ditolak</string>
+
+    <string name="date">dd/mm/yy</string>
+    <string name="status_ok">Oops, tanaman Anda membutuhkan perawatan</string>
+    <string name="status_no">Yeay, tanaman Anda dalam keadaan baik</string>
+
+    <string name="search">Cari tanaman Anda</string>
+    <string name="empty_item">Anda belum menganalisis tanaman apa pun!</string>
+
+    <string name="home" translatable="false">Home</string>
+    <string name="analysis">Analisis</string>
+    <string name="logout">Keluar</string>
+    <string name="preferences">Preferensi</string>
+    <string name="language">Bahasa</string>
+    <string name="dark_mode">Mode Gelap</string>
+    <string name="communicate">Komunikasi</string>
+    <string name="share">Bagikan</string>
+    <string name="rate">Beri Nilai</string>
+</resources>

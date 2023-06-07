@@ -1,7 +1,7 @@
 package com.dicoding.picodiploma.hydros.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.picodiploma.hydros.R
 
 class ForumActivity : AppCompatActivity() {

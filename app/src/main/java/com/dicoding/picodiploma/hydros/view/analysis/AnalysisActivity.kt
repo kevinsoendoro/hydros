@@ -3,24 +3,18 @@ package com.dicoding.picodiploma.hydros.view.analysis
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.BitmapFactory
-import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.MenuItem
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.content.FileProvider
-import com.dicoding.picodiploma.hydros.*
+import com.dicoding.picodiploma.hydros.MainActivity
+import com.dicoding.picodiploma.hydros.R
 import com.dicoding.picodiploma.hydros.databinding.ActivityAnalysisBinding
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 
 class AnalysisActivity : AppCompatActivity() {

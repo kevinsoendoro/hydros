@@ -7,40 +7,40 @@
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_menu_home"
-        android:title="Home" />
+        android:title="@string/home" />
     <item
         android:id="@+id/nav_analysis"
         android:icon="@drawable/ic_menu_analysis"
-        android:title="Analysis" />
+        android:title="@string/analysis" />
     <item
-        android:id="@+id/nav_settings"
+        android:id="@+id/nav_logout"
         android:icon="@drawable/ic_menu_logout"
-        android:title="Logout" />
+        android:title="@string/logout" />
 
-    <item android:title="Preferences">
+    <item android:title="@string/preferences">
         <menu>
             <item
                 android:id="@+id/nav_language"
                 android:icon="@drawable/ic_menu_language"
-                android:title="Language" />
+                android:title="@string/language" />
             <item
                 android:id="@+id/nav_dark_mode"
                 android:icon="@drawable/ic_menu_dark_mode"
-                android:title="Dark Mode"
+                android:title="@string/dark_mode"
                 app:actionLayout="@layout/dark_mode_layout" />
         </menu>
     </item>
 
-    <item android:title="Communicate">
+    <item android:title="@string/communicate">
         <menu>
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:title="@string/share" />
             <item
                 android:id="@+id/nav_rate"
                 android:icon="@drawable/ic_menu_rate"
-                android:title="Rate" />
+                android:title="@string/rate" />
         </menu>
     </item>
 

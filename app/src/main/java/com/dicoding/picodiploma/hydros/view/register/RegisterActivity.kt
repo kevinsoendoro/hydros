@@ -4,15 +4,14 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
-import com.dicoding.picodiploma.hydros.R
-import com.dicoding.picodiploma.hydros.databinding.ActivityLoginBinding
+import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.picodiploma.hydros.databinding.ActivityRegisterBinding
 import com.dicoding.picodiploma.hydros.view.login.LoginActivity
+import com.dicoding.picodiploma.hydros.view.welcome.Onboarding
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -22,7 +21,7 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
+        setContentView(binding.root)
         setupView()
         playAnimation()
 
@@ -30,6 +29,13 @@ class RegisterActivity : AppCompatActivity() {
             val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        val intent = Intent(this, Onboarding::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
     }
 
     private fun setupView() {
@@ -47,20 +53,19 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun playAnimation() {
         ObjectAnimator.ofFloat(binding.imageView, View.ROTATION_Y, 0f, 360f).apply {
-            duration = 5000
-            startDelay = 5000
+            duration = 3000
+            startDelay = 3000
             repeatCount = ObjectAnimator.INFINITE
             repeatMode = ObjectAnimator.REVERSE
         }.start()
 
         val animators = listOf(
-            binding.nameEditText,
+            binding.imageView,
             binding.edRegisterName,
-            binding.emailEditText,
             binding.edRegisterEmail,
-            binding.passwordEditText,
             binding.edRegisterPassword,
-            binding.buttonRegister
+            binding.buttonRegister,
+            binding.textView
         ).map {
             ObjectAnimator.ofFloat(it, View.ALPHA, 1f).setDuration(500)
         }

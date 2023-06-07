@@ -1,14 +1,14 @@
 <resources>
-    <string name="app_name">HYDROS</string>
-    <string name="splashscreen">Splash Screen</string>
-    <string name="image">Image</string>
+    <string name="app_name" translatable="false">HYDROS</string>
+    <string name="splashscreen" translatable="false">Splash Screen</string>
+    <string name="image" translatable="false">Image</string>
 
     <string name="title_page1">The Great Idea</string>
     <string name="title_page2">One Step to Go</string>
     <string name="title_page3">Make World Better</string>
     <string name="title_page4">Let\'s Get Started!</string>
-    <string name="desc_page1">Welcome to Hydros, the app dedicated to detecting diseases and making the world a better place.</string>
-    <string name="desc_page2">With Hydros, we strive to improve healthcare by providing accurate and efficient disease detection, empowering individuals to take control of their health.</string>
+    <string name="desc_page1">Welcome to Hydros, an application dedicated to detecting diseases in hydroponic plants and making the world a better place.</string>
+    <string name="desc_page2">With Hydros, we strive to improve the health of hydroponic plants by providing accurate and efficient disease detection.</string>
     <string name="desc_page3">Join us on this journey as we work together to create a healthier and happier world.</string>
 
     <string name="skip">Skip</string>
@@ -52,4 +52,19 @@
     <string name="permission_denied">Permission Denied</string>
 
     <string name="date">dd/mm/yy</string>
+    <string name="status_ok">Oops, your plant needs some love</string>
+    <string name="status_no">Yeay, it is wonderful plant</string>
+
+    <string name="search">Search your plant</string>
+    <string name="empty_item">You haven\'t analyzed any plants yet!</string>
+
+    <string name="home" translatable="false">Home</string>
+    <string name="analysis">Analysis</string>
+    <string name="logout">Logout</string>
+    <string name="preferences">Preferences</string>
+    <string name="language">Language</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="communicate">Communicate</string>
+    <string name="share">Share</string>
+    <string name="rate">Rate</string>
 </resources>

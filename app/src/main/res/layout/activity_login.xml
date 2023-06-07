@@ -12,6 +12,7 @@
         android:layout_width="230dp"
         android:layout_height="200dp"
         android:contentDescription="@string/image"
+        android:alpha="0"
         android:src="@drawable/lets_get_started"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,6 +24,7 @@
         app:boxStrokeColor="@color/brown"
         app:boxStrokeWidth="2dp"
         android:layout_width="0dp"
+        android:alpha="0"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,8 +46,9 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ed_login_password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxStrokeColor="@color/desert_sand"
+        app:boxStrokeColor="@color/brown"
         app:boxStrokeWidth="2dp"
+        android:alpha="0"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,6 +73,7 @@
     <Button
         android:id="@+id/button_login"
         style="@style/button"
+        android:alpha="0"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -83,6 +87,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/to_reg"
+        android:alpha="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />

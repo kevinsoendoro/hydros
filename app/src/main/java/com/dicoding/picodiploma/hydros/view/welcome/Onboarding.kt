@@ -2,10 +2,10 @@ package com.dicoding.picodiploma.hydros.view.welcome
 
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.widget.MotionLayout
 import com.dicoding.picodiploma.hydros.R
 import com.dicoding.picodiploma.hydros.databinding.ActivityOnboardingBinding

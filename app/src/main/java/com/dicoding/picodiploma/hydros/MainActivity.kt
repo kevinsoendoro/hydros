@@ -1,25 +1,35 @@
 package com.dicoding.picodiploma.hydros
 
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
 import android.view.MenuItem
-import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.lifecycleScope
 import com.dicoding.picodiploma.hydros.databinding.ActivityMainBinding
+import com.dicoding.picodiploma.hydros.preferences.UserPreference
 import com.dicoding.picodiploma.hydros.view.analysis.AnalysisActivity
+import com.dicoding.picodiploma.hydros.view.welcome.Onboarding
 import com.google.android.material.navigation.NavigationView
+import kotlinx.coroutines.launch
+
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var toggle: ActionBarDrawerToggle
-    private lateinit var binding: ActivityMainBinding
+    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    private val userPreference by lazy { UserPreference.getInstance(dataStore) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
@@ -52,7 +62,20 @@ class MainActivity : AppCompatActivity() {
                     startActivity(moveIntent)
                 }
 
-                R.id.nav_settings -> Toast.makeText(
+                R.id.nav_logout -> {
+                    lifecycleScope.launch {
+                        userPreference.logout()
+                        val intent = Intent(this@MainActivity, Onboarding::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                }
+
+                R.id.nav_language -> {
+                    startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
+                }
+
+                R.id.nav_dark_mode -> Toast.makeText(
                     applicationContext,
                     "Clicked settings",
                     Toast.LENGTH_SHORT
