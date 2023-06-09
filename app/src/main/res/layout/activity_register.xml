@@ -7,6 +7,17 @@
     android:padding="24dp"
     tools:context=".view.register.RegisterActivity">
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="230dp"
@@ -24,6 +35,8 @@
         app:boxStrokeColor="@color/brown"
         app:boxStrokeWidth="2dp"
         android:alpha="0"
+        android:layout_marginTop="16dp"
+        android:paddingBottom="12dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,6 +53,7 @@
             android:paddingEnd="40dp"
             android:inputType="textPersonName"
             android:hint="@string/name"
+            android:maxLength="8"
             tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -49,6 +63,7 @@
         app:boxStrokeColor="@color/brown"
         app:boxStrokeWidth="2dp"
         android:alpha="0"
+        android:paddingBottom="12dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +89,9 @@
         app:boxStrokeColor="@color/brown"
         app:boxStrokeWidth="2dp"
         android:alpha="0"
+        android:paddingBottom="12dp"
         android:layout_width="0dp"
+        app:passwordToggleEnabled="true"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -116,16 +133,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

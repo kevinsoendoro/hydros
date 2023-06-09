@@ -17,11 +17,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
-import com.dicoding.picodiploma.hydros.view.main.MainActivity
 import com.dicoding.picodiploma.hydros.R
 import com.dicoding.picodiploma.hydros.createCustomTempFile
 import com.dicoding.picodiploma.hydros.databinding.ActivityAnalysisBinding
 import com.dicoding.picodiploma.hydros.uriToFile
+import com.dicoding.picodiploma.hydros.view.main.MainActivity
 import java.io.File
 
 class AnalysisActivity : AppCompatActivity() {

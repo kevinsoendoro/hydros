@@ -32,16 +32,27 @@ class CustomEditText : AppCompatEditText {
             override fun afterTextChanged(s: Editable?) {
                 val input = s.toString()
                 error = when {
+                    input.isEmpty() -> context.getString(R.string.warn_field)
                     isEmail && !Patterns.EMAIL_ADDRESS.matcher(input).matches() -> context.getString(R.string.warn_email_customize)
                     isPassword && !input.matches(passwordRegex) -> context.getString(R.string.warn_password_customize)
                     else -> null
                 }
 
                 if (s.isNullOrEmpty()) {
-                    error = null
+                    error = context.getString(R.string.warn_field)
                 }
             }
         })
+    }
+
+    interface OnClearListener {
+        fun onClear()
+    }
+
+    private var onClearListener: OnClearListener? = null
+
+    fun setOnClearListener(listener: OnClearListener?) {
+        onClearListener = listener
     }
 
     var isEmail: Boolean = false

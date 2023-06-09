@@ -25,9 +25,16 @@
     <string name="phone">Nomor Telepon</string>
     <string name="password">Kata Sandi</string>
 
-    <string name="warn_input">Kolom tidak boleh kosong</string>
+    <string name="warn_field">Field tidak boleh kososng</string>
+    <string name="warn_email_exists">Email sudah digunakan.</string>
     <string name="warn_email_customize">Email tidak valid</string>
-    <string name="warn_password_customize">Kata sandi harus terdiri dari setidaknya 8 karakter dan mengandung angka</string>
+    <string name="warn_password_customize">Password harus terdiri dari 8 karakter dengan angka dan huruf</string>
+    <string name="warn_invalid_login">Pengguna tidak ditemukan! Mohon periksa data Anda.</string>
+
+    <string name="msg_title">Yeay!</string>
+    <string name="msg_text_register">Akun Anda telah berhasil dibuat. Ayo masuk dan mulai menjelajahi bersama kami!</string>
+    <string name="msg_text_login">Anda telah berhasil masuk! Tidak sabar untuk mulai menjelajahi?</string>
+    <string name="msg_button">Lanjut</string>
 
     <string name="open">buka</string>
     <string name="close">tutup</string>

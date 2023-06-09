@@ -8,26 +8,89 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
+import com.dicoding.picodiploma.hydros.CustomEditText
+import com.dicoding.picodiploma.hydros.R
 import com.dicoding.picodiploma.hydros.databinding.ActivityRegisterBinding
 import com.dicoding.picodiploma.hydros.view.login.LoginActivity
 import com.dicoding.picodiploma.hydros.view.welcome.Onboarding
+import com.google.firebase.auth.FirebaseAuth
 
 class RegisterActivity : AppCompatActivity() {
 
-    private val binding: ActivityRegisterBinding by lazy {
-        ActivityRegisterBinding.inflate(layoutInflater)
-    }
+    private val binding: ActivityRegisterBinding by lazy { ActivityRegisterBinding.inflate(layoutInflater) }
+    private val firebaseAuth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setupView()
+        setupAction()
         playAnimation()
 
         binding.textView.setOnClickListener {
             val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
             startActivity(intent)
+        }
+    }
+
+    private fun setupAction() {
+        binding.emailEditText.apply {
+            isEmail = true
+            setOnClearListener(object : CustomEditText.OnClearListener {
+                override fun onClear() {
+                    binding.edRegisterEmail.error = null
+                }
+            })
+        }
+
+        binding.passwordEditText.apply {
+            isPassword = true
+            setOnClearListener(object : CustomEditText.OnClearListener {
+                override fun onClear() {
+                    binding.edRegisterPassword.error = null
+                }
+            })
+        }
+
+        binding.buttonRegister.setOnClickListener {
+            val name = binding.nameEditText.text.toString()
+            val isNameEmpty = name.isEmpty()
+            val email = binding.emailEditText.text.toString()
+            val isEmailEmpty = email.isEmpty()
+            val password = binding.passwordEditText.text.toString()
+            val isPasswordEmpty = password.isEmpty()
+
+            binding.nameEditText.error = if (isNameEmpty) getString(R.string.warn_field) else null
+            binding.emailEditText.error = if (isEmailEmpty) getString(R.string.warn_field) else null
+            binding.passwordEditText.error = if (isPasswordEmpty) getString(R.string.warn_field) else null
+
+            if (!isNameEmpty && !isEmailEmpty && !isPasswordEmpty) {
+                showLoading(true)
+                firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
+                    showLoading(false)
+                    if (it.isSuccessful) {
+                        AlertDialog.Builder(this).apply {
+                            setTitle(resources.getString(R.string.msg_title))
+                            setMessage(resources.getString(R.string.msg_text_register))
+                            setPositiveButton(resources.getString(R.string.msg_button)) { _, _ ->
+                                val intent = Intent(context, LoginActivity::class.java)
+                                intent.flags =
+                                    Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                startActivity(intent)
+                                finish()
+                            }
+                            create()
+                            show()
+                        }
+                    } else {
+                        Toast.makeText(this, R.string.warn_email_exists, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
         }
     }
 

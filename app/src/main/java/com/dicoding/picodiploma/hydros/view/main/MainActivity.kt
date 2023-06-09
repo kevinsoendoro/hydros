@@ -4,14 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
-import android.view.Menu
 import android.view.MenuItem
-import android.widget.CompoundButton
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.view.menu.MenuView
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -24,10 +22,11 @@ import com.dicoding.picodiploma.hydros.databinding.ActivityMainBinding
 import com.dicoding.picodiploma.hydros.preferences.SettingPreferences
 import com.dicoding.picodiploma.hydros.preferences.UserPreference
 import com.dicoding.picodiploma.hydros.view.analysis.AnalysisActivity
+import com.dicoding.picodiploma.hydros.view.login.LoginActivity
 import com.dicoding.picodiploma.hydros.view.welcome.Onboarding
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.switchmaterial.SwitchMaterial
-import kotlinx.coroutines.flow.first
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
@@ -36,6 +35,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var switchTheme: SwitchMaterial
+    private val auth by lazy { FirebaseAuth.getInstance() }
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     private val userPreference by lazy { UserPreference.getInstance(dataStore) }
 
@@ -47,6 +47,21 @@ class MainActivity : AppCompatActivity() {
         setupDrawerLayout()
         setupNavigationMenu()
         setupSwitchTheme()
+
+        val firebaseUser = auth.currentUser
+        if (firebaseUser == null) {
+            val intent = Intent(this@MainActivity, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+            return
+        } else {
+            val navView: NavigationView = binding.navView
+            val header = navView.getHeaderView(0)
+            val uname = header.findViewById<TextView>(R.id.username)
+            val email = header.findViewById<TextView>(R.id.email)
+
+            email.text = firebaseUser.email
+        }
     }
 
     private fun setupDrawerLayout() {
@@ -73,12 +88,9 @@ class MainActivity : AppCompatActivity() {
                     startActivity(moveIntent)
                 }
                 R.id.nav_logout -> {
-                    lifecycleScope.launch {
-                        userPreference.logout()
-                        val intent = Intent(this@MainActivity, Onboarding::class.java)
-                        startActivity(intent)
-                        finish()
-                    }
+                    auth.signOut()
+                    startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+                    finish()
                 }
                 R.id.nav_language -> {
                     startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))

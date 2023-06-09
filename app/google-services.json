@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "398226470367",
+    "project_id": "project-hydros",
+    "storage_bucket": "project-hydros.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:398226470367:android:10f82ca94f0f90f566006a",
+        "android_client_info": {
+          "package_name": "com.dicoding.picodiploma.hydros"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "398226470367-80hs1hjsfjpnqs2p086g0rinndrbcpa8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwlPD6pPn4vwUyiKca24yVbiq5ZvWKO3c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "398226470367-80hs1hjsfjpnqs2p086g0rinndrbcpa8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
