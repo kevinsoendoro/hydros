@@ -10,6 +10,7 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.picodiploma.hydros.R
+import com.dicoding.picodiploma.hydros.view.main.MainActivity
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreen : AppCompatActivity() {
@@ -18,7 +19,7 @@ class SplashScreen : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this@SplashScreen, Onboarding::class.java))
+            startActivity(Intent(this@SplashScreen, MainActivity::class.java))
             overridePendingTransition(0, 0)
             finish()
         }, delay.toLong())

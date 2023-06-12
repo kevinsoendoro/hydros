@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
 import android.view.MenuItem
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -15,19 +16,17 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import com.dicoding.picodiploma.hydros.R
 import com.dicoding.picodiploma.hydros.ViewModelFactory
 import com.dicoding.picodiploma.hydros.databinding.ActivityMainBinding
 import com.dicoding.picodiploma.hydros.preferences.SettingPreferences
-import com.dicoding.picodiploma.hydros.preferences.UserPreference
 import com.dicoding.picodiploma.hydros.view.analysis.AnalysisActivity
 import com.dicoding.picodiploma.hydros.view.login.LoginActivity
 import com.dicoding.picodiploma.hydros.view.welcome.Onboarding
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.coroutines.launch
+import java.util.*
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
@@ -35,9 +34,9 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var switchTheme: SwitchMaterial
+    private val sharedPreferences by lazy { getSharedPreferences("MyPrefs", Context.MODE_PRIVATE) }
     private val auth by lazy { FirebaseAuth.getInstance() }
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-    private val userPreference by lazy { UserPreference.getInstance(dataStore) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,9 +47,10 @@ class MainActivity : AppCompatActivity() {
         setupNavigationMenu()
         setupSwitchTheme()
 
+        var userAvatar = sharedPreferences.getInt("userAvatar", R.drawable.ic_user)
         val firebaseUser = auth.currentUser
         if (firebaseUser == null) {
-            val intent = Intent(this@MainActivity, LoginActivity::class.java)
+            val intent = Intent(this@MainActivity, Onboarding::class.java)
             startActivity(intent)
             finish()
             return
@@ -59,8 +59,27 @@ class MainActivity : AppCompatActivity() {
             val header = navView.getHeaderView(0)
             val uname = header.findViewById<TextView>(R.id.username)
             val email = header.findViewById<TextView>(R.id.email)
+            val photo = header.findViewById<ImageView>(R.id.profile_image)
 
             email.text = firebaseUser.email
+            photo.setImageResource(userAvatar)
+
+            photo.setOnClickListener {
+                userAvatar = when (Random().nextInt(8)) {
+                    0 -> R.drawable.ava
+                    1 -> R.drawable.ava_coder
+                    2 -> R.drawable.ava_girl
+                    3 -> R.drawable.ava_oldlady
+                    4 -> R.drawable.ava_oldman
+                    5 -> R.drawable.ava_professor
+                    6 -> R.drawable.ava_teacher
+                    else -> R.drawable.ic_user
+                }
+                photo.setImageResource(userAvatar)
+
+                val editor = sharedPreferences.edit().putInt("userAvatar", userAvatar)
+                editor.apply()
+            }
         }
     }
 

@@ -11,7 +11,6 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.startActivity
 import com.dicoding.picodiploma.hydros.CustomEditText
 import com.dicoding.picodiploma.hydros.R
 import com.dicoding.picodiploma.hydros.databinding.ActivityRegisterBinding
@@ -85,6 +84,7 @@ class RegisterActivity : AppCompatActivity() {
                             }
                             create()
                             show()
+                            firebaseAuth.signOut()
                         }
                     } else {
                         Toast.makeText(this, R.string.warn_email_exists, Toast.LENGTH_SHORT).show()

@@ -84,7 +84,7 @@ class LoginActivity : AppCompatActivity() {
                             show()
                         }
                     } else {
-                        Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, R.string.warn_invalid_login, Toast.LENGTH_SHORT).show()
                     }
                 }
             }
