@@ -9,7 +9,7 @@ import androidx.appcompat.widget.AppCompatEditText
 
 class CustomEditText : AppCompatEditText {
 
-    private val passwordRegex = Regex(pattern = "^(?=.*\\d)(?=.*[a-zA-Z]).{8,}\$")
+    private val passwordRegex = Regex("^(?=.*\\d)(?=.*[a-zA-Z]).{8,}$")
 
     constructor(context: Context) : super(context) {
         init()
@@ -30,23 +30,15 @@ class CustomEditText : AppCompatEditText {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
             override fun afterTextChanged(s: Editable?) {
-                val input = s.toString()
+                val input = s.toString().trim()
                 error = when {
                     input.isEmpty() -> context.getString(R.string.warn_field)
                     isEmail && !Patterns.EMAIL_ADDRESS.matcher(input).matches() -> context.getString(R.string.warn_email_customize)
                     isPassword && !input.matches(passwordRegex) -> context.getString(R.string.warn_password_customize)
                     else -> null
                 }
-
-                if (s.isNullOrEmpty()) {
-                    error = context.getString(R.string.warn_field)
-                }
             }
         })
-    }
-
-    interface OnClearListener {
-        fun onClear()
     }
 
     private var onClearListener: OnClearListener? = null
@@ -57,4 +49,8 @@ class CustomEditText : AppCompatEditText {
 
     var isEmail: Boolean = false
     var isPassword: Boolean = false
+
+    interface OnClearListener {
+        fun onClear()
+    }
 }

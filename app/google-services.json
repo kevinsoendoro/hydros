@@ -1,36 +1,27 @@
 {
   "project_info": {
-    "project_number": "398226470367",
-    "project_id": "project-hydros",
-    "storage_bucket": "project-hydros.appspot.com"
+    "project_number": "36795951396",
+    "firebase_url": "https://hydros-388304-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "hydros-388304",
+    "storage_bucket": "hydros-388304.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:398226470367:android:10f82ca94f0f90f566006a",
+        "mobilesdk_app_id": "1:36795951396:android:d4442219d22bbd2192abb1",
         "android_client_info": {
           "package_name": "com.dicoding.picodiploma.hydros"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "398226470367-80hs1hjsfjpnqs2p086g0rinndrbcpa8.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAwlPD6pPn4vwUyiKca24yVbiq5ZvWKO3c"
+          "current_key": "AIzaSyBsGL6pCC1UkHYJKxTsLXRURRq2c8DDPgQ"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "398226470367-80hs1hjsfjpnqs2p086g0rinndrbcpa8.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

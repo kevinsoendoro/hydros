@@ -8,7 +8,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.MenuItem
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
@@ -36,16 +35,15 @@ class AnalysisActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val items = resources.getStringArray(R.array.plant)
-        val dropdownField : AutoCompleteTextView = findViewById(R.id.dropdown_field)
+        val dropdownField: AutoCompleteTextView = binding.dropdownField
         val adapter = ArrayAdapter(this, R.layout.dropdown_item, items)
         dropdownField.setAdapter(adapter)
 
-        dropdownField.onItemClickListener = AdapterView.OnItemClickListener {
-            adapterView, _, position, _ -> val selectedItem = adapterView.getItemAtPosition(position)
-            Toast.makeText(this, "Selected : $selectedItem", Toast.LENGTH_SHORT).show()
+        dropdownField.setOnItemClickListener { adapterView, _, position, _ ->
+            val selectedItem = adapterView.getItemAtPosition(position)
+            Toast.makeText(this, "Selected: $selectedItem", Toast.LENGTH_SHORT).show()
         }
 
-        checkPermissions()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.cameraButton.setOnClickListener { startTakePhoto() }
         binding.galleryButton.setOnClickListener { startGallery() }
@@ -66,28 +64,15 @@ class AnalysisActivity : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
-        onBackPressedDispatcher.onBackPressed()
-    }
-
-    private fun checkPermissions() {
-        if (!allPermissionsGranted()) {
-            ActivityCompat.requestPermissions(
-                this@AnalysisActivity,
-                REQUIRED_PERMISSIONS,
-                REQUEST_CODE_PERMISSIONS
-            )
-        }
-    }
-
-    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
-        ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
+        super.onBackPressed()
     }
 
     private fun startTakePhoto() {
+        checkPermissions()
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         intent.resolveActivity(packageManager)
 
-        createCustomTempFile(application).also {file ->
+        createCustomTempFile(application).also { file ->
             val photoURI: Uri = FileProvider.getUriForFile(
                 this@AnalysisActivity,
                 "com.dicoding.picodiploma.hydros",
@@ -100,6 +85,7 @@ class AnalysisActivity : AppCompatActivity() {
     }
 
     private fun startGallery() {
+        checkPermissions()
         val intent = Intent(Intent.ACTION_GET_CONTENT)
         intent.type = "image/*"
         launcherIntentGallery.launch(intent)
@@ -109,10 +95,9 @@ class AnalysisActivity : AppCompatActivity() {
 
     private val launcherIntentCamera = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
-    ) {
-        if (it.resultCode == RESULT_OK) {
+    ) { result ->
+        if (result.resultCode == RESULT_OK) {
             val myFile = File(currentPhotoPath)
-
             myFile.let { file ->
                 getFile = file
                 binding.previewImageView.setImageBitmap(BitmapFactory.decodeFile(file.path))
@@ -131,6 +116,20 @@ class AnalysisActivity : AppCompatActivity() {
                 binding.previewImageView.setImageURI(uri)
             }
         }
+    }
+
+    private fun checkPermissions() {
+        if (!allPermissionsGranted()) {
+            ActivityCompat.requestPermissions(
+                this@AnalysisActivity,
+                REQUIRED_PERMISSIONS,
+                REQUEST_CODE_PERMISSIONS
+            )
+        }
+    }
+
+    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
+        ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
     }
 
     companion object {

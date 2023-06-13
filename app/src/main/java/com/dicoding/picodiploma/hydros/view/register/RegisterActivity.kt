@@ -14,25 +14,31 @@ import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.picodiploma.hydros.CustomEditText
 import com.dicoding.picodiploma.hydros.R
 import com.dicoding.picodiploma.hydros.databinding.ActivityRegisterBinding
+import com.dicoding.picodiploma.hydros.model.UserModel
 import com.dicoding.picodiploma.hydros.view.login.LoginActivity
 import com.dicoding.picodiploma.hydros.view.welcome.Onboarding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class RegisterActivity : AppCompatActivity() {
 
-    private val binding: ActivityRegisterBinding by lazy { ActivityRegisterBinding.inflate(layoutInflater) }
-    private val firebaseAuth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
+    private lateinit var binding: ActivityRegisterBinding
+    private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        firebaseAuth = FirebaseAuth.getInstance()
         setupView()
         setupAction()
         playAnimation()
 
         binding.textView.setOnClickListener {
-            val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
         }
     }
 
@@ -56,12 +62,15 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         binding.buttonRegister.setOnClickListener {
+            database = FirebaseDatabase.getInstance().reference
             val name = binding.nameEditText.text.toString()
             val isNameEmpty = name.isEmpty()
             val email = binding.emailEditText.text.toString()
+            val emailKey = email.replace(".", "_")
             val isEmailEmpty = email.isEmpty()
             val password = binding.passwordEditText.text.toString()
             val isPasswordEmpty = password.isEmpty()
+            val user = UserModel(name, "0")
 
             binding.nameEditText.error = if (isNameEmpty) getString(R.string.warn_field) else null
             binding.emailEditText.error = if (isEmailEmpty) getString(R.string.warn_field) else null
@@ -69,16 +78,16 @@ class RegisterActivity : AppCompatActivity() {
 
             if (!isNameEmpty && !isEmailEmpty && !isPasswordEmpty) {
                 showLoading(true)
-                firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
+                firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                     showLoading(false)
-                    if (it.isSuccessful) {
+                    if (task.isSuccessful) {
+                        database.child("Users").child(emailKey).setValue(user)
                         AlertDialog.Builder(this).apply {
                             setTitle(resources.getString(R.string.msg_title))
                             setMessage(resources.getString(R.string.msg_text_register))
                             setPositiveButton(resources.getString(R.string.msg_button)) { _, _ ->
                                 val intent = Intent(context, LoginActivity::class.java)
-                                intent.flags =
-                                    Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                                 startActivity(intent)
                                 finish()
                             }
@@ -94,7 +103,6 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         val intent = Intent(this, Onboarding::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -102,10 +110,10 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun setupView() {
-        @Suppress("DEPRECATION")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             window.insetsController?.hide(WindowInsets.Type.statusBars())
         } else {
+            @Suppress("DEPRECATION")
             window.setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN

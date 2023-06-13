@@ -19,6 +19,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.dicoding.picodiploma.hydros.R
 import com.dicoding.picodiploma.hydros.ViewModelFactory
 import com.dicoding.picodiploma.hydros.databinding.ActivityMainBinding
+import com.dicoding.picodiploma.hydros.model.UserModel
 import com.dicoding.picodiploma.hydros.preferences.SettingPreferences
 import com.dicoding.picodiploma.hydros.view.analysis.AnalysisActivity
 import com.dicoding.picodiploma.hydros.view.login.LoginActivity
@@ -26,6 +27,10 @@ import com.dicoding.picodiploma.hydros.view.welcome.Onboarding
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import java.util.*
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
@@ -38,6 +43,13 @@ class MainActivity : AppCompatActivity() {
     private val auth by lazy { FirebaseAuth.getInstance() }
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
+    private val pref: SettingPreferences by lazy {
+        SettingPreferences.getInstance(application.dataStore)
+    }
+    private val mainViewModel: MainViewModel by lazy {
+        ViewModelProvider(this, ViewModelFactory(pref))[MainViewModel::class.java]
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -47,7 +59,6 @@ class MainActivity : AppCompatActivity() {
         setupNavigationMenu()
         setupSwitchTheme()
 
-        var userAvatar = sharedPreferences.getInt("userAvatar", R.drawable.ic_user)
         val firebaseUser = auth.currentUser
         if (firebaseUser == null) {
             val intent = Intent(this@MainActivity, Onboarding::class.java)
@@ -55,31 +66,7 @@ class MainActivity : AppCompatActivity() {
             finish()
             return
         } else {
-            val navView: NavigationView = binding.navView
-            val header = navView.getHeaderView(0)
-            val uname = header.findViewById<TextView>(R.id.username)
-            val email = header.findViewById<TextView>(R.id.email)
-            val photo = header.findViewById<ImageView>(R.id.profile_image)
-
-            email.text = firebaseUser.email
-            photo.setImageResource(userAvatar)
-
-            photo.setOnClickListener {
-                userAvatar = when (Random().nextInt(8)) {
-                    0 -> R.drawable.ava
-                    1 -> R.drawable.ava_coder
-                    2 -> R.drawable.ava_girl
-                    3 -> R.drawable.ava_oldlady
-                    4 -> R.drawable.ava_oldman
-                    5 -> R.drawable.ava_professor
-                    6 -> R.drawable.ava_teacher
-                    else -> R.drawable.ic_user
-                }
-                photo.setImageResource(userAvatar)
-
-                val editor = sharedPreferences.edit().putInt("userAvatar", userAvatar)
-                editor.apply()
-            }
+            setupNavigationHeader()
         }
     }
 
@@ -142,9 +129,6 @@ class MainActivity : AppCompatActivity() {
             switchTheme = actionView.findViewById(R.id.switch_theme)
         }
 
-        val pref = SettingPreferences.getInstance(application.dataStore)
-        val mainViewModel = ViewModelProvider(this, ViewModelFactory(pref))[MainViewModel::class.java]
-
         mainViewModel.getThemeSettings().observe(this) { isDarkModeActive: Boolean ->
             if (isDarkModeActive) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -158,6 +142,49 @@ class MainActivity : AppCompatActivity() {
         switchTheme.setOnCheckedChangeListener { _, isChecked ->
             mainViewModel.saveThemeSetting(isChecked)
         }
+    }
+
+    private fun setupNavigationHeader() {
+        val navView: NavigationView = binding.navView
+        val header = navView.getHeaderView(0)
+        val uname = header.findViewById<TextView>(R.id.username)
+        val email = header.findViewById<TextView>(R.id.email)
+        val photo = header.findViewById<ImageView>(R.id.profile_image)
+
+        val userAvatar = sharedPreferences.getInt("userAvatar", R.drawable.ic_user)
+        email.text = auth.currentUser?.email
+        photo.setImageResource(userAvatar)
+
+        photo.setOnClickListener {
+            val newAvatar = when (Random().nextInt(8)) {
+                0 -> R.drawable.ava
+                1 -> R.drawable.ava_coder
+                2 -> R.drawable.ava_girl
+                3 -> R.drawable.ava_oldlady
+                4 -> R.drawable.ava_oldman
+                5 -> R.drawable.ava_professor
+                6 -> R.drawable.ava_teacher
+                else -> R.drawable.ic_user
+            }
+            photo.setImageResource(newAvatar)
+
+            val editor = sharedPreferences.edit().putInt("userAvatar", newAvatar)
+            editor.apply()
+        }
+
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        val userRef = FirebaseDatabase.getInstance().getReference("Users").child(currentUser?.email?.replace(".", "_") ?: "")
+        userRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val user = snapshot.getValue(UserModel::class.java)
+                val displayName = user?.name
+                uname.text = displayName
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@MainActivity, "Error: ${error.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

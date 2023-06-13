@@ -13,20 +13,19 @@ import com.dicoding.picodiploma.hydros.view.login.LoginActivity
 import com.dicoding.picodiploma.hydros.view.register.RegisterActivity
 
 class Onboarding : AppCompatActivity() {
-
-    private val binding: ActivityOnboardingBinding by lazy {
-        ActivityOnboardingBinding.inflate(layoutInflater)
-    }
+    private lateinit var binding: ActivityOnboardingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityOnboardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         setupView()
-        buttonClick()
+        setupButtonClickListeners()
     }
 
-    private fun buttonClick() {
-        with (binding) {
+    private fun setupButtonClickListeners() {
+        with(binding) {
             buttonNext.setOnClickListener {
                 motionLayout.transitionToNextState()
             }
@@ -36,13 +35,11 @@ class Onboarding : AppCompatActivity() {
             }
 
             buttonLogin.setOnClickListener {
-                val intent = Intent(this@Onboarding, LoginActivity::class.java)
-                startActivity(intent)
+                startActivity(Intent(this@Onboarding, LoginActivity::class.java))
             }
 
             buttonRegister.setOnClickListener {
-                val intent = Intent(this@Onboarding, RegisterActivity::class.java)
-                startActivity(intent)
+                startActivity(Intent(this@Onboarding, RegisterActivity::class.java))
             }
         }
     }
@@ -63,16 +60,16 @@ class Onboarding : AppCompatActivity() {
     }
 
     private fun setupView() {
-        @Suppress("DEPRECATION")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.insetsController?.hide(WindowInsets.Type.statusBars())
+            val windowInsetsController = window.insetsController
+            windowInsetsController?.hide(WindowInsets.Type.statusBars())
         } else {
+            @Suppress("DEPRECATION")
             window.setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
         }
-
         supportActionBar?.hide()
     }
 }

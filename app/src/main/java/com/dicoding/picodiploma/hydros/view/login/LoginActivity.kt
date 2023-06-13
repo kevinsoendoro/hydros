@@ -21,19 +21,21 @@ import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
 
-    private val binding: ActivityLoginBinding by lazy { ActivityLoginBinding.inflate(layoutInflater) }
-    private val firebaseAuth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
+    private lateinit var binding: ActivityLoginBinding
+    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        firebaseAuth = FirebaseAuth.getInstance()
         setupView()
         setupAction()
         playAnimation()
 
         binding.textView.setOnClickListener {
-            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
         }
     }
 
@@ -67,16 +69,15 @@ class LoginActivity : AppCompatActivity() {
 
             if (!isEmailEmpty && !isPasswordEmpty) {
                 showLoading(true)
-                firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+                firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                     showLoading(false)
-                    if (it.isSuccessful) {
+                    if (task.isSuccessful) {
                         AlertDialog.Builder(this).apply {
                             setTitle(resources.getString(R.string.msg_title))
                             setMessage(resources.getString(R.string.msg_text_login))
                             setPositiveButton(resources.getString(R.string.msg_button)) { _, _ ->
                                 val intent = Intent(context, MainActivity::class.java)
-                                intent.flags =
-                                    Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                                 startActivity(intent)
                                 finish()
                             }
@@ -91,7 +92,6 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         val intent = Intent(this, Onboarding::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -99,10 +99,10 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setupView() {
-        @Suppress("DEPRECATION")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             window.insetsController?.hide(WindowInsets.Type.statusBars())
         } else {
+            @Suppress("DEPRECATION")
             window.setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN

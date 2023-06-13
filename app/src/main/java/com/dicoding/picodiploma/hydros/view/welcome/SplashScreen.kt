@@ -14,17 +14,16 @@ import com.dicoding.picodiploma.hydros.view.main.MainActivity
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreen : AppCompatActivity() {
+    private companion object {
+        const val DELAY_DURATION_MS = 1000L
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this@SplashScreen, MainActivity::class.java))
-            overridePendingTransition(0, 0)
-            finish()
-        }, delay.toLong())
-
         setupView()
+        delayAndStartMainActivity()
     }
 
     private fun setupView() {
@@ -37,11 +36,18 @@ class SplashScreen : AppCompatActivity() {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
         }
-
         supportActionBar?.hide()
     }
 
-    companion object {
-        const val delay = 1500
+    private fun delayAndStartMainActivity() {
+        Handler(Looper.getMainLooper()).postDelayed({
+            startMainActivity()
+        }, DELAY_DURATION_MS)
+    }
+
+    private fun startMainActivity() {
+        startActivity(Intent(this@SplashScreen, MainActivity::class.java))
+        overridePendingTransition(0, 0)
+        finish()
     }
 }
