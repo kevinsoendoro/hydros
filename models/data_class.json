@@ -1,0 +1,154 @@
+[
+ {
+  "Class_id": 1,
+  "Class_name": "Bok Choy Healthy",
+  "Description": "Bok Choy, juga dikenal sebagai sawi putih atau Chinese cabbage, adalah sejenis sayuran yang sering digunakan dalam masakan Asia. Bok Choy memiliki daun yang lebar dan pangkal yang tebal. Sayuran ini kaya akan nutrisi dan sering digunakan dalam resep tumis, sup, atau dimasak sebagai sayuran pendamping.",
+  "Characteristic": "1. Daunnya lebar dan berbentuk seperti sendok.\n2. Batangnya berwarna putih atau hijau muda.\n3. Daun dan batangnya renyah dan sedikit renyah.\n4. Rasanya lembut dan memiliki rasa yang ringan.\n",
+  "Reason": "-",
+  "Solve": "-"
+ },
+ {
+  "Class_id": 2,
+  "Class_name": "Chili Healthy",
+  "Description": "Cabai adalah tumbuhan yang termasuk ke dalam famili terung-terungan. Tumbuhan ini dikenal dengan buahnya yang memiliki rasa pedas dan sering digunakan sebagai bumbu dalam masakan. Cabai memiliki berbagai jenis dan varietas dengan ukuran, bentuk, warna, dan tingkat kepedasan yang berbeda.",
+  "Characteristic": "1. Memiliki berbagai warna.\n2. Bunga dengan warna putih.\n3. Daun berbentuk lonjong dengan ujung meruncing.\n4. Rasanya pedas.\n",
+  "Reason": "-",
+  "Solve": "-"
+ },
+ {
+  "Class_id": 3,
+  "Class_name": "Cucumber Healthy",
+  "Description": "Timun adalah tumbuhan yang termasuk dalam keluarga labu-labuan dan memiliki nama ilmiah Cucumis sativus. Timun biasanya dikenal sebagai tanaman yang menghasilkan buah yang sering digunakan dalam masakan dan juga sering dikonsumsi sebagai sayuran.",
+  "Characteristic": "1. Memiliki bentuk silinder atau silindris memanjang.\n2. Memiliki tekstur kulit yang halus dan sedikit bergerigi.\n3. Daun memiliki bentuk oval dengan ujung runcing.\n4. Rasanya segar dan sedikit manis.\n",
+  "Reason": "-",
+  "Solve": "-"
+ },
+ {
+  "Class_id": 4,
+  "Class_name": "Disease Blight",
+  "Description": "Penyakit yang sering menyerang tanaman hidroponik.",
+  "Characteristic": "1. Muncul bercak-bercak berwarna coklat atau hitam pada daun, buah, atau batang tanaman.\n2. Bercak-bercak tersebut dapat membesar dan menyebabkan kematian jaringan tanaman.\n3. Tanaman terlihat layu, lesu, atau mengalami penurunan pertumbuhan.",
+  "Reason": "1. Infeksi jamur atau bakteri.\n2. Kelembaban tinggi dan kondisi lingkungan yang lembab.\n3. Penyebaran penyakit melalui kontak langsung dengan tanaman yang terinfeksi atau melalui angin, air, atau serangga.\n",
+  "Solve": "1. Menjaga kebersihan lingkungan tumbuh tanaman.\n2. Memangkas dan membuang bagian tanaman yang terinfeksi.\n3. Menggunakan fungisida atau pestisida yang sesuai untuk mengendalikan infeksi.\n4. Mengatur pola penyiraman dan drainage yang baik untuk mengurangi kelembaban dan mencegah pertumbuhan jamur atau bakteri."
+ },
+ {
+  "Class_id": 5,
+  "Class_name": "Disease Leaf Spot",
+  "Description": "Penyakit yang sering menyerang tanaman hidroponik.",
+  "Characteristic": "1. Muncul bercak-bercak berwarna coklat atau hitam pada daun, buah, atau batang tanaman.\n2. Bercak-bercak tersebut dapat membesar dan menyebabkan kematian jaringan tanaman.\n3. Tanaman terlihat layu, lesu, atau mengalami penurunan pertumbuhan.",
+  "Reason": "1. Infeksi jamur atau bakteri.\n2. Kelembaban tinggi dan kondisi lingkungan yang lembab.\n3. Penyebaran penyakit melalui kontak langsung dengan tanaman yang terinfeksi atau melalui angin, air, atau serangga.\n",
+  "Solve": "1. Menjaga kebersihan lingkungan tumbuh tanaman.\n2. Memangkas dan membuang bagian tanaman yang terinfeksi.\n3. Menggunakan fungisida atau pestisida yang sesuai untuk mengendalikan infeksi.\n4. Mengatur pola penyiraman dan drainage yang baik untuk mengurangi kelembaban dan mencegah pertumbuhan jamur atau bakteri."
+ },
+ {
+  "Class_id": 6,
+  "Class_name": "Disease Powdery ",
+  "Description": "Penyakit yang sering menyerang tanaman hidroponik.",
+  "Characteristic": "1. Permukaan daun atau bagian tanaman terdapat lapisan serbuk putih yang terlihat seperti bubuk.\n2. Serbuk putih tersebut dapat menyebar ke berbagai bagian tanaman, termasuk daun, batang, bunga, dan buah.\n3. Daun yang terinfeksi dapat terlihat kusam, mengering, keriput, atau bahkan mengalami nekrosis (kematian jaringan).\n",
+  "Reason": "1. Kondisi lingkungan yang lembab, terutama saat suhu udara tinggi dan kelembaban rendah di malam hari.\n2. Kehadiran spora jamur powdery mildew yang tersebar melalui udara atau penularan langsung antar tanaman.\n3. Tanaman yang tumbuh terlalu rapat atau kurang sirkulasi udara yang baik.\n",
+  "Solve": "1. Menghindari kondisi lembab dengan memastikan sirkulasi udara yang baik di sekitar tanaman.\n2. Membuang dan menghancurkan bagian tanaman yang terinfeksi powdery mildew untuk mencegah penyebaran lebih lanjut.\n3. Penggunaan fungisida yang tepat dan aman untuk mengendalikan infeksi. Konsultasikan dengan ahli pertanian atau petani lainnya untuk memilih produk yang sesuai.\n4. Memangkas tanaman untuk memberikan ruang dan sirkulasi udara yang lebih baik."
+ },
+ {
+  "Class_id": 7,
+  "Class_name": "Disease Tip Burn",
+  "Description": "Penyakit yang sering menyerang tanaman hidroponik.",
+  "Characteristic": "1. Ujung daun tanaman terlihat coklat atau kekuningan.\n2. Daun yang terkena biasanya terlihat layu atau keriput.\n3.Bisa terjadi pada selada, kangkung, atau tanaman sayuran hijau lainnya.",
+  "Reason": "1. Kekurangan kalsium dalam tanah.\n2. Fluktuasi suhu dan kelembaban yang ekstrem.\n3. Kekurangan air atau kelebihan air yang berlebihan.\n4. Nutrisi yang tidak seimbang dalam tanah",
+  "Solve": "1. Menyediakan cukup kalsium dalam tanah dengan menggunakan pupuk kalsium atau bahan organik kaya kalsium.\n2. Menjaga kestabilan suhu dan kelembaban di sekitar tanaman.\n3. Memberikan penyiraman yang cukup secara teratur.\n4. Memastikan tanah memiliki nutrisi yang seimbang dengan menggunakan pupuk yang sesuai."
+ },
+ {
+  "Class_id": 8,
+  "Class_name": "Green Mustard Healthy",
+  "Description": "Sawi, juga dikenal sebagai mustard greens atau mustard spinach, adalah sejenis sayuran hijau yang populer dalam masakan Asia. Sayuran ini memiliki daun berbentuk seperti daun selada dengan batang yang panjang. Sawi sering digunakan dalam tumisan, sup, atau dijadikan bahan untuk makanan pencuci mulut. Sawi memiliki rasa yang sedikit pahit dan tekstur yang renyah.",
+  "Characteristic": "1. Daunnya berbentuk bulat atau oval dengan tepi yang bergerigi.\n2. Batangnya panjang dan kokoh, berwarna hijau terang atau putih.\n3. Daunnya memiliki warna hijau tua atau hijau keunguan, tergantung pada varietasnya.\n4. Daun dan batangnya memiliki tekstur yang renyah ketika dimasak atau dikonsumsi mentah.",
+  "Reason": "-",
+  "Solve": "-"
+ },
+ {
+  "Class_id": 9,
+  "Class_name": "Lettuce Healthy",
+  "Description": "Selada adalah tanaman sayuran hijau yang biasanya digunakan dalam salad atau sebagai lapisan tambahan dalam sandwich. Ada berbagai jenis selada, seperti selada hijau, selada merah, selada es, dan selada romaine.",
+  "Characteristic": "1. Daunnya berwarna hijau segar.\n2. Daunnya terasa renyah dan lembut.\n3. Biasanya memiliki bentuk daun yang bergerigi atau berlapis.\n4. Memiliki aroma dan rasa yang segar.",
+  "Reason": "-",
+  "Solve": "-"
+ },
+ {
+  "Class_id": 10,
+  "Class_name": "Pest Aphids",
+  "Description": "Hama yang sering menyerang tanaman hidroponik.",
+  "Characteristic": "1. Aphids adalah serangga kecil berukuran sekitar 1-4 mm dengan tubuh berbentuk oval.\n2. Mereka dapat memiliki berbagai warna seperti hijau, kuning, merah, coklat, atau hitam.\n3. Aphids biasanya berkumpul di bagian ujung pucuk tanaman atau di bawah daun.",
+  "Reason": "Hama",
+  "Solve": "1. Menggunakan air sabun: Campurkan air dengan sedikit sabun cair dan semprotkan pada daun yang terinfeksi aphids. Sabun akan membunuh aphids dengan cara melumpuhkan sistem pernapasan mereka.\n2. Menggunakan air jet: Semprotkan jet air yang kuat pada daun yang terinfeksi untuk secara fisik menghilangkan aphids dari tanaman.\n3. Menggunakan predator alami: Membangun populasi serangga predator seperti ladybug atau lacewing dapat membantu mengendalikan aphids secara alami.\n4. Menggunakan insektisida alami: Beberapa bahan alami seperti minyak neem, minyak mineral, atau pyrethrin dapat digunakan untuk mengendalikan aphids."
+ },
+ {
+  "Class_id": 11,
+  "Class_name": "Pest Cotton Leafworm",
+  "Description": "Hama yang sering menyerang tanaman hidroponik.",
+  "Characteristic": "1. Larva berwarna hijau terang dengan garis-garis atau bintik-bintik hitam di tubuhnya.\n2. Serangan terutama terjadi pada tanaman kapas dan tanaman keluarga kubis.\n3. Larva ini biasanya makan pada daun tanaman dan dapat menyebabkan kerusakan pada tanaman yang signifikan jika populasi tidak dikendalikan.",
+  "Reason": "Hama",
+  "Solve": "1. Memeriksa tanaman secara rutin dan secara manual menghapus ulat yang terlihat pada daun.\n2. Menggunakan insektisida yang sesuai untuk mengendalikan populasi ulat.\n3. Menerapkan metode pengendalian organik, seperti menggunakan larva serangga yang memangsa ulat sebagai predator alami.\n4. Menanam tanaman perangkap atau tanaman pengganggu yang menarik ulat leafworm agar tidak menyerang tanaman utama."
+ },
+ {
+  "Class_id": 12,
+  "Class_name": "Pest Leafworm",
+  "Description": "Hama yang sering menyerang tanaman hidroponik.",
+  "Characteristic": "1. Terdapat larva atau ulat berwarna hijau atau coklat di daun tanaman.\n2. Daun tanaman yang terinfeksi dapat terlihat terlubangi atau terkoyak.\n3. Serangan yang parah dapat menyebabkan kerusakan yang signifikan pada daun dan menghambat pertumbuhan tanaman.",
+  "Reason": "Hama",
+  "Solve": "1. Memeriksa tanaman secara rutin dan secara manual menghapus ulat yang terlihat pada daun.\n2. Menggunakan insektisida yang sesuai untuk mengendalikan populasi ulat.\n3. Menerapkan metode pengendalian organik, seperti menggunakan larva serangga yang memangsa ulat sebagai predator alami.\n4. Menanam tanaman perangkap atau tanaman pengganggu yang menarik ulat leafworm agar tidak menyerang tanaman utama."
+ },
+ {
+  "Class_id": 13,
+  "Class_name": "Pest Mealybug",
+  "Description": "Hama yang sering menyerang tanaman hidroponik.",
+  "Characteristic": "1. Hama mealybug memiliki tubuh kecil yang berbentuk oval atau lonjong dengan warna putih atau abu-abu pucat.\n2. Serangannya biasanya terlihat pada daun, batang, dan buah tanaman.\n3. Mealybug dapat menghasilkan lapisan putih berbulu yang terlihat seperti kapas pada tanaman.\n4. Serangan yang parah dapat menyebabkan kerusakan pada tanaman, seperti layu, pengeringan, atau deformasi buah.",
+  "Reason": "Hama",
+  "Solve": "1. Memeriksa tanaman secara rutin dan secara manual menghapus mealybug yang terlihat pada daun, batang, atau buah.\n2. Menggunakan insektisida yang efektif untuk mengendalikan populasi mealybug.\n3. Menerapkan pengendalian biologi, seperti penggunaan serangga predator atau parasitoid yang memangsa mealybug.\n4. Membersihkan daun dan batang dengan air sabun atau larutan alkohol untuk menghilangkan lapisan putih berbulu."
+ },
+ {
+  "Class_id": 14,
+  "Class_name": "Pest Snail",
+  "Description": "Hama yang sering menyerang tanaman hidroponik.",
+  "Characteristic": "1. Terdapat lendir atau bekas lendir pada daun atau tanah di sekitar tanaman.\n2. Tanaman mungkin terlihat berlubang atau daunnya menjadi transparan karena serangan siput.\n3. Terdapat jejak lendir berbentuk garis-garis di tanah atau permukaan datar di sekitar tanaman.",
+  "Reason": "Hama",
+  "Solve": "1. Memeriksa tanaman secara manual dan membuang siput yang ditemukan.\n2. Menggunakan perlindungan fisik seperti pagar atau penghalang untuk mencegah siput masuk ke area tanaman.\n3. Menggunakan umpan atau perangkap siput untuk menarik dan mengendalikan populasi siput.\n4. Menggunakan bahan pengendali siput yang aman dan sesuai dengan petunjuk penggunaan."
+ },
+ {
+  "Class_id": 15,
+  "Class_name": "Pest Thirps",
+  "Description": "Hama yang sering menyerang tanaman hidroponik.",
+  "Characteristic": "1. Tanaman terlihat berlubang atau terdapat goresan keperakan pada daun.\n2. Daun yang terinfeksi dapat menjadi keriting atau menggulung.\n3. Biasanya ada jejak serbuk berwarna hitam atau keperakan di sekitar tanaman.\n4. Tanaman dapat mengalami pertumbuhan yang terhambat atau bahkan mati jika serangan parah.",
+  "Reason": "Hama",
+  "Solve": "1. Menggunakan insektisida yang sesuai untuk mengendalikan hama ini.\n2. Menjaga kebersihan lingkungan tumbuh tanaman dan membuang daun yang terinfeksi.\n3. Menggunakan jebakan kuning atau jebakan lengket untuk menarik dan menangkap hama.\n4. Menggunakan tanaman pengganggu (trap crop) untuk menarik hama agar tidak menyerang tanaman utama."
+ },
+ {
+  "Class_id": 16,
+  "Class_name": "Spinach Healthy",
+  "Description": "Bayam adalah tumbuhan yang biasa ditanam untuk dikonsumsi daunnya sebagai sayuran hijau. Tumbuhan ini berasal dari Amerika tropik namun sekarang tersebar ke seluruh dunia. Tumbuhan ini dikenal sebagai sayuran sumber zat besi yang penting bagi tubuh.",
+  "Characteristic": "1. Daunnya berwarna hijau gelap atau merah keunguan.\n2. Daunnya lembut dan sedikit keriput.\n3. Biasanya memiliki daun yang berbentuk bundar atau oval.\n4. Rasanya lezat dan sedikit pahit.",
+  "Reason": "-",
+  "Solve": "-"
+ },
+ {
+  "Class_id": 17,
+  "Class_name": "Strawberry Healthy",
+  "Description": "Stroberi adalah buah yang memiliki penampilan menarik dan rasanya manis. Buah ini memiliki bentuk bulat dan kecil, dengan permukaan yang halus dan berwarna merah cerah. Stroberi biasanya memiliki tekstur yang lembut dengan biji kecil yang tersebar di sekitar permukaannya.",
+  "Characteristic": "1. Permukaan daun berduri kecil.\n2. Daun berbentuk tiga hingga lima kelopak dengan tekstur kasar\n3. Daun berwarna hijau tua.\n4. Rasa buah manis dengan sedikit keasaman.",
+  "Reason": "-",
+  "Solve": "-"
+ },
+ {
+  "Class_id": 18,
+  "Class_name": "Tomato Healthy",
+  "Description": "Tanaman tomat adalah tumbuhan yang menghasilkan buah tomat yang umumnya digunakan dalam masakan dan juga dikonsumsi secara langsung. Buah tomat memiliki berbagai warna, termasuk merah, kuning, hijau, atau ungu, tergantung pada jenisnya. Tomat biasanya digunakan dalam salad, saus, sup, atau dijadikan bahan utama dalam berbagai hidangan.",
+  "Characteristic": "1. Batangnya berupa tangkai yang kuat.\n2. Daunnya berbentuk lonjong dengan tepi bergelombang.\n3. Buahnya berbentuk bulat atau oval, tergantung pada jenisnya.\n4. Rasanya bervariasi antara manis dan sedikit asam, tergantung pada tingkat kematangan.",
+  "Reason": "-",
+  "Solve": "-"
+ },
+ {
+  "Class_id": 19,
+  "Class_name": "Water Spinach Healthy",
+  "Description": "Kangkung adalah tumbuhan yang termasuk jenis sayur-sayuran dan ditanam sebagai makanan. Kangkung banyak dijual di pasar-pasar. Kangkung banyak terdapat di kawasan Asia, tempat asalnya tidak diketahui. dan merupakan tumbuhan yang dapat dijumpai hampir di mana-mana terutama di kawasan berair.",
+  "Characteristic": "1. Daunnya berwarna hijau gelap.\n2. Batangnya panjang dan berwarna hijau terang.\n3. Daun dan batangnya lembut.\n4. Rasanya segar dan renyah.",
+  "Reason": "-",
+  "Solve": "-"
+ }
+]
