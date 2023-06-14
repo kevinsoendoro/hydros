@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">HYDROS</string>
     <string name="splashscreen" translatable="false">Splash Screen</string>
+    <string name="detail" translatable="false">Detail</string>
     <string name="image" translatable="false">Image</string>
 
     <string name="title_page1">The Great Idea</string>
@@ -74,4 +75,11 @@
     <string name="communicate">Communicate</string>
     <string name="share">Share</string>
     <string name="rate">Rate</string>
+
+    <string name="upload_success">Photo uploaded successfully</string>
+    <string name="upload_failed">Failed to upload photo</string>
+    <string name="select_plant">Please select a plant</string>
+    <string name="select_image">Please select an image</string>
+
+    <string name="lorem" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer efficitur luctus libero, id semper arcu ullamcorper eget. Suspendisse lacinia, nisl ut porttitor rhoncus, ante eros euismod nulla, et venenatis odio nunc vitae tortor. Maecenas ac dictum lectus, at pulvinar ipsum. Fusce non tristique arcu. Aenean faucibus maximus augue, quis vestibulum tellus porttitor sed. Ut sit amet enim non enim efficitur placerat vel eu libero. Donec mi mauris, egestas ut consectetur sed, auctor et tellus. Curabitur dignissim elit nec vestibulum ultricies. Duis egestas, eros eget maximus hendrerit, est purus euismod risus, in tincidunt ex ipsum et mauris. Cras consectetur nunc pretium metus dictum mollis. Nunc quis sem vitae nisi lacinia dapibus sed nec ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque id urna rhoncus quam sagittis sagittis. Phasellus mollis, est sed mattis viverra, tortor erat ultricies justo, nec semper nisl tortor sit amet purus. Vestibulum vulputate ac sapien nec fringilla. Integer ac tempus nunc. Ut finibus, felis quis porta rhoncus, risus lectus eleifend eros, eu vehicula eros lectus sit amet tellus. Morbi lacus tellus, facilisis sit amet felis eget, efficitur commodo est. Nam rhoncus sodales sapien sed scelerisque. Fusce maximus urna nibh, et suscipit nulla bibendum at.</string>
 </resources>

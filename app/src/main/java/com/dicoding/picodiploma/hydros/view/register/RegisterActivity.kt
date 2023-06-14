@@ -66,11 +66,10 @@ class RegisterActivity : AppCompatActivity() {
             val name = binding.nameEditText.text.toString()
             val isNameEmpty = name.isEmpty()
             val email = binding.emailEditText.text.toString()
-            val emailKey = email.replace(".", "_")
             val isEmailEmpty = email.isEmpty()
             val password = binding.passwordEditText.text.toString()
             val isPasswordEmpty = password.isEmpty()
-            val user = UserModel(name, "0")
+            val user = UserModel(name)
 
             binding.nameEditText.error = if (isNameEmpty) getString(R.string.warn_field) else null
             binding.emailEditText.error = if (isEmailEmpty) getString(R.string.warn_field) else null
@@ -81,7 +80,7 @@ class RegisterActivity : AppCompatActivity() {
                 firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                     showLoading(false)
                     if (task.isSuccessful) {
-                        database.child("Users").child(emailKey).setValue(user)
+                        database.child("Users").child(firebaseAuth.currentUser?.uid ?: "").setValue(user)
                         AlertDialog.Builder(this).apply {
                             setTitle(resources.getString(R.string.msg_title))
                             setMessage(resources.getString(R.string.msg_text_register))

@@ -7,18 +7,31 @@
     android:padding="24dp"
     tools:context=".view.analysis.AnalysisActivity">
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layerType="hardware"
+        android:visibility="gone"
+        android:elevation="3dp"
+        app:layout_constraintBottom_toBottomOf="@id/previewImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/previewImageView"
+        tools:visibility="visible" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ed_plants"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:focusableInTouchMode="true"
+        android:hint="@string/choose_plant"
         app:boxStrokeColor="@color/brown"
         app:boxStrokeWidth="2dp"
-        android:hint="@string/choose_plant"
-        android:focusableInTouchMode="true"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <AutoCompleteTextView
             android:id="@+id/dropdown_field"
@@ -43,12 +56,12 @@
         style="@style/button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/camera"
-        android:layout_marginEnd="8dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@+id/previewImageView"
+        android:layout_marginEnd="8dp"
+        android:text="@string/camera"
         app:layout_constraintEnd_toStartOf="@+id/galleryButton"
-        app:layout_constraintTop_toBottomOf="@+id/previewImageView"/>
+        app:layout_constraintStart_toStartOf="@+id/previewImageView"
+        app:layout_constraintTop_toBottomOf="@+id/previewImageView" />
 
     <Button
         android:id="@+id/galleryButton"
@@ -66,8 +79,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/upload"
-        app:layout_constraintStart_toStartOf="@+id/previewImageView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/previewImageView"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/previewImageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

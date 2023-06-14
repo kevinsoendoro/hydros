@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
 import android.view.MenuItem
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -16,9 +17,11 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.picodiploma.hydros.R
 import com.dicoding.picodiploma.hydros.ViewModelFactory
 import com.dicoding.picodiploma.hydros.databinding.ActivityMainBinding
+import com.dicoding.picodiploma.hydros.model.DataPlants
 import com.dicoding.picodiploma.hydros.model.UserModel
 import com.dicoding.picodiploma.hydros.preferences.SettingPreferences
 import com.dicoding.picodiploma.hydros.view.analysis.AnalysisActivity
@@ -41,6 +44,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var switchTheme: SwitchMaterial
     private val sharedPreferences by lazy { getSharedPreferences("MyPrefs", Context.MODE_PRIVATE) }
     private val auth by lazy { FirebaseAuth.getInstance() }
+    private val currentUser = auth.currentUser
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
     private val pref: SettingPreferences by lazy {
@@ -58,9 +62,9 @@ class MainActivity : AppCompatActivity() {
         setupDrawerLayout()
         setupNavigationMenu()
         setupSwitchTheme()
+        setContent()
 
-        val firebaseUser = auth.currentUser
-        if (firebaseUser == null) {
+        if (currentUser == null) {
             val intent = Intent(this@MainActivity, Onboarding::class.java)
             startActivity(intent)
             finish()
@@ -81,13 +85,9 @@ class MainActivity : AppCompatActivity() {
         binding.navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_home -> {
-                    if (menuItem.itemId == binding.navView.checkedItem?.itemId) {
-                        Toast.makeText(applicationContext, "You are already on the home screen", Toast.LENGTH_SHORT).show()
-                    } else {
-                        val moveIntent = Intent(this@MainActivity, MainActivity::class.java)
-                        moveIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                        startActivity(moveIntent)
-                    }
+                    val moveIntent = Intent(this@MainActivity, MainActivity::class.java)
+                    moveIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    startActivity(moveIntent)
                 }
                 R.id.nav_analysis -> {
                     val moveIntent = Intent(this@MainActivity, AnalysisActivity::class.java)
@@ -152,7 +152,7 @@ class MainActivity : AppCompatActivity() {
         val photo = header.findViewById<ImageView>(R.id.profile_image)
 
         val userAvatar = sharedPreferences.getInt("userAvatar", R.drawable.ic_user)
-        email.text = auth.currentUser?.email
+        email.text = currentUser?.email
         photo.setImageResource(userAvatar)
 
         photo.setOnClickListener {
@@ -172,8 +172,7 @@ class MainActivity : AppCompatActivity() {
             editor.apply()
         }
 
-        val currentUser = FirebaseAuth.getInstance().currentUser
-        val userRef = FirebaseDatabase.getInstance().getReference("Users").child(currentUser?.email?.replace(".", "_") ?: "")
+        val userRef = FirebaseDatabase.getInstance().getReference("Users").child(currentUser?.uid ?: "")
         userRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val user = snapshot.getValue(UserModel::class.java)
@@ -192,5 +191,38 @@ class MainActivity : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun setContent() {
+        val userRef = FirebaseDatabase.getInstance().getReference("Users").child(currentUser?.uid ?: "")
+        val listPlantsRef = userRef.child("listPlants")
+
+        listPlantsRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.hasChildren()) {
+                    binding.tvEmptyItems.visibility = View.GONE
+                    binding.rvPlants.visibility = View.VISIBLE
+                    binding.rvPlants.layoutManager = LinearLayoutManager(this@MainActivity)
+                    binding.rvPlants.setHasFixedSize(true)
+
+                    val plantList = ArrayList<DataPlants>()
+                    for (plantSnapshot in snapshot.children) {
+                        val plant = plantSnapshot.getValue(DataPlants::class.java)
+                        plant?.let {
+                            plantList.add(it)
+                        }
+                    }
+                    plantList.sortByDescending { it.createdAt }
+                    val adapter = MainAdapter(plantList)
+                    binding.rvPlants.adapter = adapter
+                } else {
+                    binding.tvEmptyItems.visibility = View.VISIBLE
+                    binding.rvPlants.visibility = View.GONE
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                // Handle onCancelled event
+            }
+        })
     }
 }

@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.MenuItem
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
@@ -19,13 +20,21 @@ import androidx.core.content.FileProvider
 import com.dicoding.picodiploma.hydros.R
 import com.dicoding.picodiploma.hydros.createCustomTempFile
 import com.dicoding.picodiploma.hydros.databinding.ActivityAnalysisBinding
+import com.dicoding.picodiploma.hydros.model.DataPlants
 import com.dicoding.picodiploma.hydros.uriToFile
+import com.dicoding.picodiploma.hydros.view.login.LoginActivity
 import com.dicoding.picodiploma.hydros.view.main.MainActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
 import java.io.File
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AnalysisActivity : AppCompatActivity() {
 
     private var getFile: File? = null
+    private var storageReference = FirebaseStorage.getInstance().reference
     private val binding: ActivityAnalysisBinding by lazy {
         ActivityAnalysisBinding.inflate(layoutInflater)
     }
@@ -39,14 +48,11 @@ class AnalysisActivity : AppCompatActivity() {
         val adapter = ArrayAdapter(this, R.layout.dropdown_item, items)
         dropdownField.setAdapter(adapter)
 
-        dropdownField.setOnItemClickListener { adapterView, _, position, _ ->
-            val selectedItem = adapterView.getItemAtPosition(position)
-            Toast.makeText(this, "Selected: $selectedItem", Toast.LENGTH_SHORT).show()
-        }
-
+        checkPermissions()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.cameraButton.setOnClickListener { startTakePhoto() }
         binding.galleryButton.setOnClickListener { startGallery() }
+        binding.uploadButton.setOnClickListener { uploadImage() }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -68,7 +74,6 @@ class AnalysisActivity : AppCompatActivity() {
     }
 
     private fun startTakePhoto() {
-        checkPermissions()
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         intent.resolveActivity(packageManager)
 
@@ -85,10 +90,69 @@ class AnalysisActivity : AppCompatActivity() {
     }
 
     private fun startGallery() {
-        checkPermissions()
         val intent = Intent(Intent.ACTION_GET_CONTENT)
         intent.type = "image/*"
         launcherIntentGallery.launch(intent)
+    }
+
+    private fun uploadImage() {
+        if (getFile != null) {
+            val file = Uri.fromFile(getFile)
+            val plant = binding.dropdownField.text.toString()
+
+            if (plant.isNotEmpty()) {
+                showLoading(true)
+                val plantName = plant.lowercase(Locale.ROOT)
+                val photoRef = storageReference.child("images/${System.currentTimeMillis()}_$plantName.jpg")
+                photoRef.putFile(file).addOnSuccessListener { uploadTask ->
+                    uploadTask.storage.downloadUrl.addOnSuccessListener {downloadUri ->
+                        showLoading(false)
+                        val currentDate =
+                            SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(Date())
+                        val data = DataPlants(
+                            System.currentTimeMillis(),
+                            currentDate,
+                            plant,
+                            "",
+                            downloadUri.toString(),
+                            false
+                        )
+                        val databaseReference = FirebaseDatabase.getInstance().reference
+                        databaseReference.child("Users")
+                            .child(FirebaseAuth.getInstance().currentUser?.uid ?: "")
+                            .child("listPlants").push().setValue(data)
+                            .addOnCompleteListener { task ->
+                                if (task.isSuccessful) {
+                                    Toast.makeText(
+                                        this,
+                                        getString(R.string.upload_success),
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                    startActivity(
+                                        Intent(
+                                            this@AnalysisActivity,
+                                            MainActivity::class.java
+                                        )
+                                    )
+                                } else {
+                                    Toast.makeText(
+                                        this,
+                                        getString(R.string.upload_failed),
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            }
+                    }.addOnFailureListener {
+                        showLoading(false)
+                        Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } else {
+                Toast.makeText(this, getString(R.string.select_plant), Toast.LENGTH_SHORT).show()
+            }
+        } else {
+            Toast.makeText(this, getString(R.string.select_image), Toast.LENGTH_SHORT).show()
+        }
     }
 
     private lateinit var currentPhotoPath: String
@@ -130,6 +194,10 @@ class AnalysisActivity : AppCompatActivity() {
 
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     companion object {
