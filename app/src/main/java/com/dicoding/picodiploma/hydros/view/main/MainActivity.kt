@@ -113,7 +113,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.nav_rate -> Toast.makeText(
                     applicationContext,
-                    "Clicked rate",
+                    "Let we know your experiences using HYDROS at email ntmygaa@gmail.com~",
                     Toast.LENGTH_SHORT).show()
             }
             true
