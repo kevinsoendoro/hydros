@@ -54,7 +54,7 @@ Below is the plot loss of the model after 30 more epoch training:
 
    | Accuracy | Val_accuracy | Loss   | Val_loss | Model    |
    | -------- | ------------ | ------ | -------- | -------- |
-   | 0.7881   | 0.8006       | 0.7045 | 0.6827   | Good fit |
+   | 0.8057   | 0.8264       | 0.6038 | 0.6038   | Good fit |
    
 
 ## 2. testing_model.ipynb
