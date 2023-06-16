@@ -29,12 +29,17 @@ As the data from the dataset is the raw data, we need to process the data first 
 
 ### D. Evaluation
 1. Plot the accuracy of the model in the epoch. The plot is for the accuracy of both the train set and the test set. After plotting, check the graph. Does the accuracy continue to increase or keep decreasing and if it continues to increase, then the model is well-fit 
-               
-      <img src="https://github.com/kevinsoendoro/hydros/edit/ml-development/blob/ml-development/image/model_acc" width="375" />
+
+<p align='center'>
+  <img src="https://github.com/kevinsoendoro/hydros/blob/ml-development/image/model_acc.png" width="450" />
+</p>
 
 2. Plot the loss of the model in the epoch. As the opposite of accuracy, the plot is for loss of both the train set and the test set should decrease in each epoch. After plotting, check the graph. Does the loss continue to decrease or keep increasing and if it continues to decrease, then the model is well-fit                         
-               <img src="https://github.com/kevinsoendoro/hydros/edit/ml-development/blob/ml-development/image/model_loss.png" width="375" />
-               
+
+<p align='center'>
+  <img src="https://github.com/kevinsoendoro/hydros/blob/ml-development/image/model_loss.png" width="450" />
+</p>
+
 3. Table of relevant in accuracy and loss
 
    | Accuracy | Val_accuracy | Loss   | Val_loss | Model    |
