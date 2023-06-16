@@ -8,7 +8,7 @@ This repository mainly consists of 2 files:
 1. `tflearning_Hydros_(MobileNetV2).ipynb` that the flow of process from the making of the model, pre-processing, processing, compiling and fitting, evaluating, also saving the model and converting them to Tensorflow lite (.tflite) file
 3. `testing_model.ipynb` that for manually testing the model that we already had
 
-## 1. tf_native_modelling_relevant.ipynb
+## 1. tflearning_Hydros_(MobileNetV2).ipynb
 ### A. How To Make The Model?
 1. Data Processing and Data Preparation for Modelling
 2. Modelling Process (Transfer Learning)
@@ -42,7 +42,7 @@ As the data from the dataset is the raw data, we need to process the data first 
    | 0.7881   | 0.8006       | 0.7045 | 0.6827   | Good fit |
    
 
-## 2. tf_native_modelling_sentiment.ipynb
+## 2. testing_model.ipynb
 ### A. Import libraries
 
 ### B. Load the TFLite model of the best accuracy that we've already had before
