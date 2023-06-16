@@ -34,10 +34,20 @@ As the data from the dataset is the raw data, we need to process the data first 
   <img src="https://github.com/kevinsoendoro/hydros/blob/ml-development/image/model_acc.png" width="450" />
 </p>
 
+Below is the plot accuracy of the model after 30 more epoch training:
+<p align='center'>
+  <img src="https://github.com/kevinsoendoro/hydros/blob/ml-development/image/model_acc(30 epoch).png" width="450" />
+</p>
+
 2. Plot the loss of the model in the epoch. As the opposite of accuracy, the plot is for loss of both the train set and the test set should decrease in each epoch. After plotting, check the graph. Does the loss continue to decrease or keep increasing and if it continues to decrease, then the model is well-fit                         
 
 <p align='center'>
   <img src="https://github.com/kevinsoendoro/hydros/blob/ml-development/image/model_loss.png" width="450" />
+</p>
+ 
+Below is the plot loss of the model after 30 more epoch training:
+<p align='center'>
+  <img src="https://github.com/kevinsoendoro/hydros/blob/ml-development/image/model_loss(30 epoch).png" width="450" />
 </p>
 
 3. Table of relevant in accuracy and loss
