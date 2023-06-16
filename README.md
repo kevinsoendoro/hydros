@@ -2,13 +2,16 @@
   <a href="https://www.python.org/">
     <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />        
   </a>&nbsp;&nbsp;
+  <a href="https://flask.palletsprojects.com/en/2.0.x/">
+    <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white" />        
+  </a>&nbsp;&nbsp;
   <a href="https://www.tensorflow.org/">
     <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" />
   </a>&nbsp;&nbsp;
 </p>
 <br>
 <p align='center'>
-    <img src="https://i.ibb.co/NV8Hpj1/Hydros-Logo-Bar.png/" alt="Dices showing Faces">
+    <img src="https://i.ibb.co/GJxxNF7/Hydros-Logo-Bar-663.png" alt="Dices showing Faces">
 </p>
 
 # Bangkit Capstone Project (C23-PC695)
