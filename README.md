@@ -1,8 +1,21 @@
-![image](https://i.ibb.co/PtmxJvN/Hydros-Logo-318.png)
-![image](https://i.ibb.co/CzVRCh5/msedge-GYR2-Tsp95t.png)
+<p align='center'>
+  <a href="https://www.python.org/">
+    <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />        
+  </a>&nbsp;&nbsp;
+  <a href="https://www.tensorflow.org/">
+    <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" />
+  </a>&nbsp;&nbsp;
+</p>
+<br>
+<p align='center'>
+    <img src="https://i.ibb.co/NV8Hpj1/Hydros-Logo-Bar.png/" alt="Dices showing Faces">
+</p>
 
-# Bangkit Capstone Project
-This is a documentation about Hydros (Hydroponic Autonomous) Applicaton!
+# Bangkit Capstone Project (C23-PC695)
+Welcome to our little family! This is a repository containing documentation of Hydros (Hydroponic Autonomous) Applicaton.
+
+# Our Design Ideas
+[![figma](https://img.shields.io/badge/Figma-Our%20Design-success)](https://www.figma.com/file/KKOXbT3DIJzPZXDc2mqerx/Hydros?type=design&node-id=0%3A1&t=61i8qBHIiiMyywpy-1)
 
 # Our Member
 |            Member           | Student ID  |               University               |        Path         |
